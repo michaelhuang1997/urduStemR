@@ -1,0 +1,102 @@
+---
+title: "Notes"
+output: html_notebook
+---
+```{r}
+triplet <- c(paste("0",c(60:69),sep=""),paste("06",c("A","B","C","D","E","F"),sep=""))
+ArabicUnicodeChars <- as.vector(sapply(triplet,function(x){paste(x,c(0:9,c("A","B","C","D","E","F")),sep="")}))
+x1 <- paste0("\\u",ArabicUnicodeChars)
+ArabicUnicodeChars <- sapply(x1,function(x){parse(text = paste0("'", x, "'"))[[1]]})
+rm(x1,triplet)
+```
+
+```{r}
+trim <- function (x) gsub("^\\s+|\\s+$", "", x)
+```
+
+```{r}
+## Removes Latin character numbers
+rmEngNum <- function(texts){
+  texts <- gsub('[0-9]', ' ', texts)
+  # remove extra spaces
+  return(trim(gsub(" {2,}", " ", texts)))
+}
+
+## Removes Arabic character numbers
+rmAraNum <- function(texts){
+  texts <- gsub('[\u0660-\u0669]',' ',texts)
+  # remove extra spaces
+  return(trim(gsub(" {2,}"," ", texts)))
+}
+
+## Removes Urdu character numbers
+rmUrdNum <- function(texts){
+  texts <- gsub('[\u06f0-\u06f9]',' ',texts)
+  # remove extra spaces
+  return(trim(gsub(" {2,}"," ", texts)))
+}
+
+## bundles the three functions for removing numbers
+rmNum <- function(texts){
+  texts <- rmEngNum(texts)
+  texts <- rmAraNum(texts)
+  texts <- rmUrdNum(texts)
+  return(texts)
+}
+```
+
+```{r}
+a <- "میری عمر ۲۴ سال ہے۔"
+b <- "how are & you"
+```
+
+```{r}
+rmNum(a)
+```
+
+```{r}
+gsub("[[:punct:]]", " ",b)
+```
+
+```{r}
+text <- "The quick brown fox jumps over the lazy dog. El rápido zorro marrón salta sobre el perro perezoso."
+latin_chars <- gsub("\\p{Latin}", "", text, perl = T)
+latin_chars
+```
+
+```{r}
+cleanChars <- function(texts){
+  # http://jrgraphix.net/research/unicode_blocks.php
+  ## ones I'm dropping
+  texts <- gsub('[\u00A0-\u0600]|[\u0600-\u0621]|[\u063b-\u0640]|[\u064b-\u065f]|[\u066a-\u067d]|[\u067f-\u06ff]|[\u0700-\uFB4F]|[\uFB50-\uFDFF]|[\uFE00-\uFFFF]','',texts)
+  ## I could sort through these ones too: http://jrgraphix.net/r/Unicode/FB50-FDFF, but I'm not right now
+  ## clean up spaces
+  return(trim(gsub(" {2,}"," ", texts)))
+}
+```
+
+```{r}
+ArabicUnicodeChars[!sapply(ArabicUnicodeChars,cleanChars)==""]
+```
+
+```{r}
+'\u06a9\u06d2\u0020\u067e\u06cc\u0686\u06be\u06d2'
+```
+
+```{r}
+a <- "اس کے پیچھے"
+```
+
+```{r}
+testing <- function(texts){
+  texts <- gsub('\u06a9\u06d2\u0020\u067e\u06cc\u0686\u06be\u06d2', '', texts)
+  return(texts)
+}
+  
+```
+
+
+```{r}
+testing(a)
+```
+
