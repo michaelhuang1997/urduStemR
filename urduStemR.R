@@ -131,29 +131,60 @@ rmSW <- function(texts, defaultSWList=T, customSWList=NULL){
   textsSplit = strsplit(texts," ")
 
   preps <- c('\u06a9\u06d2', #ke
+             '\u06a9\u0627', #kaa
+             '\u06a9\u06cc', #kee
              '\u0645\u06cc\u06ba', #main
              '\u0645\u06cc\u0646', #main with dot
              '\u0633\u06d2', #se
-             '\u06a9\u06d2\u0020\u0628\u0627\u0648\u062c\u0648\u062f', #ke bawajood
-             '\u06a9\u06d2\u0020\u0644\u0626\u06d2', # ke liye
-             '\u06a9\u06d2\u0020\u0628\u062c\u0627\u0626\u06d2', #ke bajaaye
-             '\u06a9\u06d2\u0020\u0633\u0627\u62a\u06be', #ke saath
-             '\u06a9\u06d2\u0020\u0639\u0644\u0627\u0648\u06c1',  #ke alaawah
-             '\u06a9\u06d2\u0020\u062f\u0631\u0645\u06cc\u0627\u06ba', #ke darmiyaan
-             '\u06a9\u06d2\u0020\u062f\u0631\u0645\u06cc\u0627\u0646', #ke darmiyaan with dot
-             '\u06a9\u06d2\u0020\u0646\u0632\u062f\u06cc\u06a9', #ke nazdeek
-             '\u06a9\u06d2\u0020\u0628\u0631\u0639\u06a9\u0633', #ke bar-aks
-             '\u06a9\u06d2\u0020\u067e\u06cc\u0686\u06be\u06d2', #ke peeche
+             '\u0628\u0627\u0648\u062c\u0648\u062f', #bawajood
+             '\u0644\u0626\u06d2', #liye
+             '\u0628\u062c\u0627\u0626\u06d2', #bajaaye
+             '\u0633\u0627\u062a\u06be', #saath
+             '\u0639\u0644\u0627\u0648\u06c1',  #alaawah
+             '\u062f\u0631\u0645\u06cc\u0627\u06ba', #darmiyaan
+             '\u062f\u0631\u0645\u06cc\u0627\u0646', #darmiyaan with dot
+             '\u0646\u0632\u062f\u06cc\u06a9', #nazdeek
+             '\u0628\u0631\u0639\u06a9\u0633', #bar-aks
+             '\u067e\u06cc\u0686\u06be\u06d2', #peeche
+             '\u0633\u0627\u0645\u0646\u06d2', #saamne
+             '\u0630\u0631\u06cc\u0639\u06d2', #zariye
+             '\u0633\u0628\u0628', #sabab
+             '\u0628\u063a\u06cc\u0631', #baghair
+             '\u0646\u0627\u0645', #naam
+             '\u0641\u0648\u0642', #foq
+             '\u0646\u06cc\u0686\u06d2', #neeche
+             '\u0628\u0627\u06c1\u0631', #bahar
+             '\u0644\u0641\u0638\u0648\u06ba\u0020', #lafzon
+             '\u0628\u0631\u0627\u0628\u0631', #barabar
+             '\u0628\u0631\u062a\u0631', #bartar
+             '\u0627\u0648\u067e\u0631', #oopar
+             '\u0627\u0646\u062f\u0631', #andar
+             '\u0637\u0631\u0641', #taraf
 
+  )
 
-
-
+  # Demonstrative, subject and relative pronouns
+  pronouns <- c('\u0645\u06cc\u06ba', #main
+                '\u0622\u067e', #aap
+                '\u062a\u0645', #tum
+                '\u0648\u06c1', #vo
+                '\u06c1\u0645', #ham
+                '\u0627\u0633', #is/us
+                '\u062a\u0648', #tu
 
 
 
 
 
   )
+
+
+
+
+
+
+
+
 }
 
 
